@@ -1,0 +1,7 @@
+para iniciar o backend:
+apontar terminal para esta pasta e fazer
+npm ci
+node ./index.js
+
+
+APONTAR LINKS PARA LOCALHOST:3000/

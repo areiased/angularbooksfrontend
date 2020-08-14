@@ -1,0 +1,14 @@
+
+<div class="booksLinkListContainer">
+    <div *ngIf="searchbarEnable" class="searchbox-container">
+    <input type="text" class="searchbox" placeholder=" Search by Title or ID..." [(ngModel)]="searchString">
+    <img class="search-icon" src="../../assets/icons/search-24px.svg">
+    </div>
+    <mat-action-list dense>
+            <a [routerLink]="link.url" *ngFor="let link of bookLinks | filterBookList : searchString">
+            <div class="individualBookLinks"><button mat-list-item routerLinkActive="bookLinkActive">
+                <img src="../../assets/icons/book-24px.svg" class="sidebar-list-icon"> {{link.title}}
+            </button></div>
+            </a>
+    </mat-action-list>
+</div>

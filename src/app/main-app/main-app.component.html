@@ -1,0 +1,32 @@
+<mat-toolbar class="topbar">
+    <button class="menu-button" (click)="_toggleSideBar()" mat-raised-button matRipple matTooltip="Show/Hide Sidebar">
+        <img src="../../assets/icons/hamburger-icon.svg" class="menu-icon" [ngClass]="{'menu-icon-on': sidebarToggle}" alt="Show/Hide Sidebar"/>
+    </button>
+    <span class="header-title">
+        <a href="/">The Book Archive</a>
+        <p>© by Eduardo Correia</p>
+    </span>
+    <img src="../../assets/icons/book-topbar.svg" class="topbar-icon">
+</mat-toolbar>
+
+
+<div class="whole-screen">
+        <div class="side-bar" [ngClass]="{'sidebar-ON': sidebarToggle}">
+            <mat-divider></mat-divider>
+            <p class="sidebar-title">Book List Menu</p>
+            <mat-divider></mat-divider>
+            <div *ngIf="!sidebarLoaded">
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                <p class="sidebar-loading-text">Loading sidebar...</p>
+            </div>
+            <p *ngIf="err" class="sidebar-error-msg">{{ err }}</p>
+            <app-sidebar-app (sidebarLoaded)="_sidebarLoaded($event)"></app-sidebar-app>
+        </div>
+
+    <div class="main-content">
+        <p *ngIf="currentRoute" class="no-current-route"> To start, choose a book from the sidebar.</p>
+        <router-outlet (hasCurrentRoute)="currentRoute"></router-outlet>
+    </div>
+
+    
+</div>

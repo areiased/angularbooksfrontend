@@ -1,0 +1,218 @@
+@import '../../main-styles.scss'; // importar os mainstyles scss definidos na root
+@import '../../styles.scss';
+
+// desativar os efeitos de selection e focus do browser / OS, not needed
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+// defining animations ------------------------------
+// devido à forma como eu estou a lidar com as animações do site e as media queries, não é possível
+// fazer a propriedade "reverse" nas animations, dai eu ter feito uma animação reversed manualmente para cada uma
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeout {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes rotate90 {
+    from { transform: rotate(90deg); }
+    to { transform: rotate(0deg); }
+}
+
+@keyframes sidebarSlideIn {
+    from { transform: translateY(-120%);}
+    to { transform: translateY(0%);}
+}
+
+@keyframes sidebarSlideOut {
+    from { transform: translateY(0%);}
+    to { transform: translateY(-120%);}
+}
+
+@keyframes addShadow {
+    from { box-shadow: 0px 0px 0px #888888; }
+    to { box-shadow: 2px 2px 4px #888888; }
+}
+
+@keyframes removeShadow {
+    from { box-shadow: 2px 2px 4px #888888; }
+    to { box-shadow: 0px 0px 0px #888888; }
+}
+
+@keyframes widthZero {
+    from { width: 400px; }
+    to { width: 0; }
+}
+
+@keyframes widthBackToInitial {
+    from { width: 0; }
+    to { width: 400px; }
+}
+
+// end of defining animations ------------------------------
+
+.whole-screen {
+    background-color: $light-grey;
+    font-family: 'Nunito';
+    font-weight: 300;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    min-height: 850px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.topbar {
+    position: absolute;
+    z-index: 5;
+    box-shadow: 0px 0px 0px #888888;
+    animation: 0.5s addShadow forwards;
+    height: $topbar-height;
+    width: 100vw;
+
+    .topbar-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2px 1px;
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.header-title > a { // topbar title
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    color: lighten($dark, 20%);
+    padding: 0px 10px;
+    border: none;
+    transition: 0.5s all;
+
+    &:hover {
+        color: $dark;
+        transition: 0.2s all;
+    }
+}
+
+.header-title > p {
+        position: absolute;
+        color: lighten($dark, 40%);
+        top: 0;
+        right: 15px;
+        font-size: 50%;
+        transition: color .3s;
+
+    &:hover {
+        color: $dark;
+        transition: color 0.3s;
+    }
+}
+
+
+.menu-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+
+    .menu-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.5s all;
+    }
+
+    .menu-icon-on {
+        transform: rotate(90deg);
+        transition: 0.5s all;
+    }
+}
+
+// desktop default
+
+.side-bar {
+    // DEFAULT DA SIDEBAR + SIDEBAR DESLIGADA
+    animation: 0.2s 0.3s 1 sidebarSlideOut forwards, 1s 0.3s fadeout forwards, 0.5s removeShadow forwards, 0.3s 0.8s widthZero forwards;
+    position: relative;
+    z-index: 10;
+    top: 30px;
+    left: 0;
+    width: 400px;
+    max-height: calc(90vh + 30px); // 90% of the div screen, same as in sidebar scss + sidebar title height
+    overflow: hidden;
+
+    @media only screen and (max-width: $desktop-width) { // em scss posso meter mediaqueries dentro das classes
+        // mobile
+        position: absolute;
+        animation: 0.5s sidebarSlideIn forwards, 1s fadein forwards, 0.3s 0.5s addShadow forwards, 0.3s 0s widthBackToInitial forwards;
+    }
+
+    .sidebar-error-msg {
+        padding: 10px;
+        text-align: center;
+        color: black;
+        background-color: $light-grey;
+    }
+
+    .sidebar-title {
+        margin: 0px;
+        padding: 5px 0px 5px 20px;
+        color: lighten($dark-blue, 20%);
+        font-family: 'Nunito';
+        font-weight: 300;
+        font-size: 16px;
+        width: auto;
+        background-color: $light-grey;
+    }
+
+    .sidebar-loading-text {
+        font-size: 12px;
+        text-align: center;
+        background-color: $light-grey;
+    }
+}
+
+.sidebar-ON {
+    // COM A SIDEBAR LIGADA ( EM MOBILE SIGNIFICA OFF, AO CONTRARIO)
+        z-index: 5;
+
+    @media only screen and (min-width: $desktop-width) {
+        animation: 0.5s sidebarSlideIn forwards, 1s fadein forwards, 0.3s 0.5s addShadow forwards, 0.3s 0s widthBackToInitial forwards;
+    }
+    
+    @media only screen and (max-width: $desktop-width) { // mobile
+        z-index: 10;
+        position: absolute;
+        animation: 0.2s 0.3s 1 sidebarSlideOut forwards, 1s 0.3s fadeout forwards, 0.5s removeShadow forwards, 0.3s 0.8s widthZero forwards;
+    }
+}
+
+.main-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    z-index: 0;
+    top: 50px; // top do main content ******* 1
+    background-color: $light-grey;
+    color: $dark;
+    max-width: 100vw;
+    height: 0px; // 50px é o padding top do main content ******* 1
+    opacity: 0;
+    animation: 4s both fadein;
+    transition: 0.5s all;
+}

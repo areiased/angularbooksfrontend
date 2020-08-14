@@ -1,0 +1,50 @@
+<mat-divider></mat-divider>
+<div class="outer-big-div">
+    <div class="book-cover-image-container"><img src={{coverUrl}} alt="Book Cover image for: {{title}}" class="cover-img"></div>
+    <div class="info-tabs-container">
+        <mat-tab-group mat-align-tabs="start" animationDuration="0.2s">
+            <mat-tab label="Book Resume">
+                <div class="main-info-container">
+                    <div class="book-cover-image-container-MOBILE"><img src={{coverUrl}} alt="Book Cover image for: {{title}}" class="cover-img"></div>
+                    <br>
+                    <h1><img src="../../assets/icons/book-24px.svg" class="book-icon">{{ title }} </h1>
+                    <p class="authors-text">{{ authors }}</p>
+                    <br>
+                    <br>
+                    <p>Genre(s): {{ genre }}</p>
+                    <br>
+                    <p>Release Year: {{ releaseYear }} </p>
+                    <br>
+                    <p>Publish Date: {{ publishDate }}</p>
+                    <br>
+                    <p>Publish Place(s): {{ publishPlaces }}</p>
+                    <br>
+                    <p>Number of Pages: {{ numPages }}</p>
+                </div>
+            </mat-tab>
+            <mat-tab label="Description">
+                <div class="description-tab-container">
+                    <br>
+                    <h1><img src="../../assets/icons/book-24px.svg" class="book-icon">{{ title }} - Book Description</h1>
+                    <br>
+                    <br>
+                    <p>{{ description }}</p>
+                </div>
+            </mat-tab>
+            <mat-tab label="Tecnical Info.">
+                <div class="tecnical-info-tab-container">
+                    <br>
+                    <h1><img src="../../assets/icons/book-24px.svg" class="book-icon">{{ title }} - Tecnical Information</h1>
+                    <br>
+                    <br>
+                    <p>ID of this book in the server: {{ id }}</p>
+                    <br>
+                    <p>URL of the cover image:
+                    <br>
+                    <a href={{coverUrl}} target="_blank()">{{coverUrl}}</a></p>
+                    <p style="font-size: 70%;">(Link opens in a new tab)</p>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>
