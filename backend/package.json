@@ -27,12 +27,5 @@
     "lint-staged": "10.0.8",
     "prettier": "1.19.1"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": "eslint --cache --fix"
-  }
+
 }
