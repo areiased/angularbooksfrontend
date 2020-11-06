@@ -9,8 +9,11 @@ After you select a book, the client asks the API for all the info from that book
 
 This website is available for vising and testing [HERE](http://bookslibrary.eduardocorreia.epizy.com/) (temporary webhost)
 
-For offline use:
-- This repo has a folder called backend (`/backend`) that inside has a small part of the api in .json format and instructions on how to run it for offline, localhost testing.
+#### For offline use:
+1. This repo has a folder called backend (`/backend`) that inside has a small part of the api in .json format and instructions on how to run it for offline, localhost testing. It has a file `INSTRUCTIONS_BACKEND.txt` with instructions in it. Use it to turn on the backend API before continuing.
+2. After having the API up and running (and saying `listening at localhost:3000` or something similar in the terminal), open another terminal, navigate to the ROOT path of this project "`/`" with `cd /*path-to-root-of-this-project*/` and just run `npm start`. Let it compile, when it stops, leave it running.
+3. Open your browser on the same computer and navigate to `localhost:4200` in your URL address bar.
+4. Profit?
 
 
 #### *This was completely made from scratch by me: Eduardo Correia (owner of this github profile).*
