@@ -9,6 +9,9 @@ After you select a book, the client asks the API for all the info from that book
 
 This website is available for vising and testing [HERE](http://bookslibrary.eduardocorreia.epizy.com/) (temporary webhost)
 
+For offline use:
+- This repo has a folder called backend (`/backend`) that inside has a small part of the api in .json format and instructions on how to run it for offline, localhost testing.
+
 
 #### *This was completely made from scratch by me: Eduardo Correia (owner of this github profile).*
 ### ⭐️ If you wanna contact me for professional enquiries, please do so!
