@@ -4,9 +4,9 @@ to run the backend API for testing the frontend website offline or without needi
 2- Open a new terminal window
 3- Navigate to the *ProjectRoot*/backend folder of this project (with " cd /*path to project root*/backend ")
 4- type " npm ci " and press enter
-5- type " `node ./index.js` " and press enter
-6- It should now say " `listening on localhost:3000`", leave it running.
+5- type " node ./index.js " and press enter
+6- It should now say " listening on localhost:3000", leave it running.
 
-7- This API now responds to any request made to " `localhost:3000/` "
+7- This API now responds to any request made to " localhost:3000/ "
 
-Now just run the Angular website normally. Instructions in `Readme.md`, root of this project/github page
+Now just run the Angular website normally. Instructions in Readme.md, root of this project/github page
